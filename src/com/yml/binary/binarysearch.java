@@ -23,17 +23,23 @@ package com.yml.binary;
 
 			return current;
 		}
-
-		public void printNodes() {
-			printNode(root);
+		public int getSize() {
+			return this.getSizeRecursive(root);
 		}
+		public void printNodes() {
+			printNodes(root);
+		}
+		private int getSizeRecursive(Node<K> current) {
+			return current == null ? 0 : 1 + this.getSizeRecursive(current.left) + this.getSizeRecursive(current.right);
+		}
+
 //printing nodes
-		public void printNode(Node<K> root) {
+		public void printNodes(Node<K> root) {
 			if (root == null)
 				return;
-			printNode(root.left);
+			printNodes(root.left);
 			System.out.print(root.key + " ");
-			printNode(root.right);
+			printNodes(root.right);
 
 		}
 
