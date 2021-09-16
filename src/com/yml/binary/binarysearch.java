@@ -23,6 +23,7 @@ package com.yml.binary;
 
 			return current;
 		}
+		//to get the size
 		public int getSize() {
 			return this.getSizeRecursive(root);
 		}
@@ -31,6 +32,24 @@ package com.yml.binary;
 		}
 		private int getSizeRecursive(Node<K> current) {
 			return current == null ? 0 : 1 + this.getSizeRecursive(current.left) + this.getSizeRecursive(current.right);
+		}
+		//to search the keys
+		public void search(K key) {
+			if (root == null) {
+				System.out.println(key + " not found");
+				return;
+			}
+			int compareResult = key.compareTo(root.key);
+			if (compareResult == 0)
+				System.out.println(key + " is found");
+			else if (compareResult < 0)
+				search(key, root.left);
+			else
+				search(key, root.right);
+		}
+		
+		public void printNodes1() {
+			printNodes(root);
 		}
 
 //printing nodes
